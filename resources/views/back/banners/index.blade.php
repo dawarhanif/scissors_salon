@@ -132,11 +132,11 @@ input:checked + .slider .off
                 @foreach($banners as $banner)
                 <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$banner->title}}</td>
+                <td>{!!$banner->title!!}</td>
                 <td><img src="{{asset('back/images/uploads/'.$banner->image)}}" style="height:50px; width:50px;" alt=""></td>
-                <td>{{$banner->text_1}}</td>
-                <td>{{$banner->text_2}}</td>
-                <td>{{$banner->text_3}}</td>
+                <td>{!!$banner->text_1!!}</td>
+                <td>{!!$banner->text_2!!}</td>
+                <td>{!!$banner->text_3!!}</td>
                 <td>
                                         <label class="switch">
                                          <input type="checkbox" id="togBtn" <?php echo $banner->status== 'active' ? ' checked' : ''; ?> class="website_product_sell" value="<?php echo $banner->id ?>">
@@ -151,8 +151,8 @@ input:checked + .slider .off
                                          </div>
                                         </label></td>
                 <td><a  href="javascript:void(0)" onclick="delete_banner({{$banner->id}})" class="btn btn-danger btn-sm"><i class="fas fa-trash" aria-hidden="true"></i></a>
-                <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                <a href="{{route('banners.edit',$banner->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                <a href="{{route('banners.show',$banner->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 
                 </tr>
                 @endforeach

@@ -73,7 +73,8 @@ class BannersController extends Controller
      */
     public function show($id)
     {
-        //
+        $banner = Banner::find($id);
+        return view('back.banners.show',compact('banner'));
     }
 
     /**
@@ -84,7 +85,8 @@ class BannersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banner = Banner::find($id);
+        return view('back.banners.edit',compact('banner'));
     }
 
     /**
@@ -96,7 +98,28 @@ class BannersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'text_1' => 'required|string',
+            'text_2' => 'required|string',
+            'text_3' => 'required|string',
+
+        
+        ]);
+        $banner = Banner::find($id);
+        if($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move('back/images/uploads', $imageName);
+            $banner->image = $imageName;
+        }
+        
+        $banner->title=$request->title;
+        $banner->text_1=$request->text_1;
+        $banner->text_2=$request->text_2;
+        $banner->text_3=$request->text_3;
+       
+        $banner->update(); 
+        return redirect(route('banners.index'));
     }
 
     /**
