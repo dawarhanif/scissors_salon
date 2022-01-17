@@ -114,4 +114,17 @@ class BannersController extends Controller
         'success' => 'Record deleted successfully!'
     ]);
     }
+    public function change_status(Request $request){
+        $id = $request->banner_status;
+        $banner = Banner::find($id);
+        if($banner->status=='active'){
+            $banner->status = 'disabled';
+            $banner->save();
+        }
+        else{
+            $banner->status = 'active';
+            $banner->save();
+        }
+        return response("Status Changed");
+    }
 }

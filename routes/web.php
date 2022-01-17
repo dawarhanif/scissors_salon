@@ -23,6 +23,7 @@ Auth::routes(['register' => false]);
     Route::get('/settings', [App\Http\Controllers\Back\SettingsController::class, 'index'] )->name('all_settings');
     Route::post('/settings', [App\Http\Controllers\Back\SettingsController::class, 'save'] )->name('save_settings');
     Route::resource('banners', App\Http\Controllers\Back\BannersController::class );
+    Route::get('/banner-status-change',[App\Http\Controllers\Back\BannersController::class, 'change_status'])->name('change_banner_status');
 
 
  });
