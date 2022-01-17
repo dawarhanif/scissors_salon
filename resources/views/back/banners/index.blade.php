@@ -1,4 +1,9 @@
 @extends('back.layout.app')
+
+@section('beforeHeadClose')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('content')
 <div class="content-wrapper">
   <div class="content-header">
@@ -50,7 +55,10 @@
                 <td>{{$banner->text_1}}</td>
                 <td>{{$banner->text_2}}</td>
                 <td>{{$banner->text_3}}</td>
-                <td>{{$banner->status}}</td>
+                <td><div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" onchange="change_status({{$banner->id}})" id="customSwitches" {{$banner->status=='active'?'checked':''}}>
+                  <label class="custom-control-label" for="customSwitches"></label>
+                </div></td>
                 <td><a  href="javascript:void(0)" onclick="delete_banner({{$banner->id}})" class="btn btn-danger btn-sm"><i class="fas fa-trash" aria-hidden="true"></i></a>
                 <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                 <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -85,20 +93,45 @@
 }, 5000);
 </script>
 
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   function delete_banner(id) {
-    
-    $.ajax({
-    url: 'admin/banners/'+id,
-    type: 'DELETE',
-    data: {
-            "id": id,
-        },
-    success: function(result) {
-       console.log(result);
-    }
-});
+           
+            Swal.fire({
+                title: 'Are you sure ?',
+                text: "You won't be able to revert this !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  $.ajax({
+                  url: "{{route('banners.destroy','')}}"+ "/" + id,
+                  datatype: 'json',
+                  method: 'DELETE',
+                  data: {"id":id, "_token": "{{ csrf_token() }}"},
+                  success: function($data) {
+                    if ($data.success) {
+                            swal.fire("Done!", $data.message, "success").then(function(){
+                              location.reload();
+                            });
+                            
+                        } else {
+                            swal.fire("Error!", 'Sumething went wrong.', "error");
+                        }
+                  }
+
+              });
+                }
+            })
+        };
+
+</script>
+<script>
+  function change_status(id){
+    console.log(id);
   }
 </script>
 @endsection

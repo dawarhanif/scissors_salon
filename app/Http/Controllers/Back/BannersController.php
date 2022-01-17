@@ -62,7 +62,7 @@ class BannersController extends Controller
        
         $banners->save(); 
         $message = "Banner Created Successfully";
-        return view('back.banners.index',compact('banners','message'));
+        return redirect(route('banners.index'));
     }
 
     /**
@@ -107,7 +107,11 @@ class BannersController extends Controller
      */
     public function destroy($id)
     {
-
-        dd("shoper");
+        
+        Banner::find($id)->delete($id);
+        
+        return response()->json([
+        'success' => 'Record deleted successfully!'
+    ]);
     }
 }

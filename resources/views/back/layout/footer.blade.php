@@ -30,7 +30,3 @@
 <script src="{{asset('back/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
 <!-- ChartJS -->
 <script src="{{asset('back/plugins/chart.js/Chart.min.js') }}"></script>
-
-<!-- AdminLTE for demo purposes -->
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('back/js/pages/dashboard2.js') }}"></script>
