@@ -18,9 +18,9 @@
   <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   @include('back.layout.header')
   @include('back.layout.sidebar')
-    
+ 
          @yield('content')
-    
+          
   @include('back.layout.footer')
 
   @yield('beforeBodyClose')

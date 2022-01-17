@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 navbar-light">
-          <div class="atlanta_logo"><img alt="" class="logo-default" src="{{asset('front/images/salon_logo.png')}}"></div>
+          <div class="atlanta_logo"><img alt="" class="logo-default" src="{{asset('back/images/uploads/'.$setting->logo)}}"></div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         </div>
         <div class="col-lg-8 col-md-12">

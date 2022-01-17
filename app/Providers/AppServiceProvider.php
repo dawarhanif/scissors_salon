@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Setting;
 
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('*', function ($view) {
+
+              $view->with('setting', Setting::first());
+
+            });
     }
 }
