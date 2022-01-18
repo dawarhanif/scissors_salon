@@ -11,20 +11,16 @@
 <div class="tp-banner-container">
   <div class="tp-banner">
     <ul>
-      <li data-slotamount="7" data-transition="3dcurtain-horizontal" data-masterspeed="1000" data-saveperformance="on"> <img alt="" src="{{asset('front/images/dummy.png')}}" data-lazyload="{{asset('front/images/slider.jpg')}}">
-        <div class="caption lfb large-title tp-resizeme slidertext1" data-x="left" data-y="240" data-speed="600" data-start="1600"> Welcome To </div>
-        <div class="caption lft large-title tp-resizeme slidertext2" data-x="left" data-y="270" data-speed="600" data-start="2200"><span> Beauty Salon </span></div>
-        <div class="caption lfb large-title tp-resizeme slidertext3" data-x="left" data-y="400" data-speed="600" data-start="2800"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br/>
-          tempor incididunt ut labore et dolore magna aliqua.</div>
+      @foreach($banners as $banner)
+      <li data-slotamount="7" data-transition="3dcurtain-horizontal" data-masterspeed="1000" data-saveperformance="on"> <img alt="" src="{{asset('back/uploads/$banner->image')}}" data-lazyload="{{asset('front/images/slider.jpg')}}">
+        <div class="caption lfb large-title tp-resizeme slidertext1" data-x="left" data-y="240" data-speed="600" data-start="1600"> {!!$banner->text_1!!}</div>
+        <div class="caption lft large-title tp-resizeme slidertext2" data-x="left" data-y="270" data-speed="600" data-start="2200"><span>{!!$banner->text_2!!} </span></div>
+        <div class="caption lfb large-title tp-resizeme slidertext3" data-x="left" data-y="400" data-speed="600" data-start="2800"> {!!$banner->text_3!!} 
+          </div>
         <div class="caption lfb large-title tp-resizeme slidertext4" data-x="left" data-y="470" data-speed="600" data-start="3400"> <a href="#">Contact Us</a> </div>
       </li>
-      <li data-slotamount="7" data-transition="slotzoom-horizontal" data-masterspeed="1000" data-saveperformance="on"> <img alt="" src="{{asset('front/images/dummy.png')}}" data-lazyload="{{asset('front/images/slider2.jpg')}}">
-        <div class="caption lfb large-title tp-resizeme slidertext1" data-x="left" data-y="240" data-speed="600" data-start="1600"> Welcome To </div>
-        <div class="caption lft large-title tp-resizeme slidertext2" data-x="left" data-y="270" data-speed="600" data-start="2200"><span> Beauty Salon </span></div>
-        <div class="caption lfb large-title tp-resizeme slidertext3" data-x="left" data-y="400" data-speed="600" data-start="2800"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br/>
-          tempor incididunt ut labore et dolore magna aliqua.</div>
-        <div class="caption lfb large-title tp-resizeme slidertext4" data-x="left" data-y="470" data-speed="600" data-start="3400"> <a href="#">Contact Us</a> </div>
-      </li>
+      
+      @endforeach
     </ul>
   </div>
 </div>
@@ -38,15 +34,14 @@
         <div class="about_box">
           <div class="title">
             <p>About Us</p>
-            <h1>Our Salon is Most Popular, <span>Clean and Recommended</span> Hair Salon</h1>
+            <h1>{!!$about->title!!}</h1>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur, pulvinar rhoncus risus. Fusce vel rutrum mi. Suspendisse pretium tellus eu ipsum pellentesque convallis. Ut mollis libero eu massa imperdiet faucibus vitae non diam. Sed egestas felis libero, ut suscipit nisl varius non. Proin eget suscipit nulla. Nulla facilisi. In hac habitasse platea dictumst. </p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nibh dolor, gravida faucibus dolor consectetur, pulvinar rhoncus risus. Fusce vel rutrum mi. Suspendisse pretium tellus eu ipsum pellentesque convallis. Ut mollis libero eu massa imperdiet faucibus vitae non diam. Sed egestas felis libero, ut suscipit nisl varius non. Proin eget suscipit nulla. Nulla facilisi. In hac habitasse platea dictumst. </p>
+          <p>{!!$about->description!!}</p>
           <div class="readmore"><a href="#">Read More</a></div>
         </div>
       </div>
       <div class="col-lg-6">
-        <div class="aboutImg"><img alt="" src="images/aboutImg.png"></div>
+        <div class="aboutImg"><img alt="" src="{{asset('back/images/uploads/').'/'.$about->img}}"></div>
       </div>
     </div>
   </div>
