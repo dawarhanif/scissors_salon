@@ -76,6 +76,12 @@
                   <p>About Us</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('service-categories.index')}}" id="service_categories_sidebar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Service Categories</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

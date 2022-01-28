@@ -26,7 +26,10 @@ Auth::routes(['register' => false]);
     Route::resource('about-us', App\Http\Controllers\Back\AboutUsController::class );
 
     Route::get('/banner-status-change',[App\Http\Controllers\Back\BannersController::class, 'change_status'])->name('change_banner_status');
-
+    Route::resource('service-categories', App\Http\Controllers\Back\ServiceCategoriesController::class);
+    Route::get('/service-slug-check',[App\Http\Controllers\Back\ServiceCategoriesController::class, 'slugCheck'])->name('check_slug_category');
+    Route::get('/category-status-change',[App\Http\Controllers\Back\ServiceCategoriesController::class, 'change_status'])->name('change_category_status');
+   
 
  });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
