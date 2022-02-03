@@ -24,18 +24,20 @@
     <div class="row">
       <div class="col-12 col-sm-6 col-md-8 mb-3">
       
-            <form action="{{route('service-categories.store')}}" method="POST"  enctype="multipart/form-data">
+            <form action="{{route('service-categories.update',$category->id)}}" method="POST"  enctype="multipart/form-data">
+            
               @csrf
+              @method('PUT')
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
+                    <input type="text" name="name" id="name" class="form-control" value="{{$category->name}}">
                     @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Slug</label>
-                    <input type="text" name="slug" id="slug" value="{{old('slug')}}" class="form-control">
+                    <input type="text" name="slug" id="slug" value="{{$category->slug}}" class="form-control">
 
                     @error('slug')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -44,7 +46,7 @@
                
                 
                 <div class="text-center">
-                  <input type="submit" value="Create" class="btn btn-primary col-md-5">
+                  <input type="submit" value="Update" class="btn btn-primary col-md-5">
           
                    <a href="{{route('service-categories.index')}}" class="btn btn-light col-md-6">Cancel</a>
                 </div>

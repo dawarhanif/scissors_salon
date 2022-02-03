@@ -76,9 +76,10 @@ class ServiceCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $category = Service_Category::where('slug',$slug)->first();
+        return view('back.service_categories.edit',compact('category'));
     }
 
     /**
@@ -90,7 +91,20 @@ class ServiceCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $validated = $request->validate([
+            'name' => 'required|max:30|string',
+            'slug' => 'string|unique:service__categories,slug',
+
+        
+        ]);
+        
+        $category = Service_Category::find($id);
+        
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+        $category->update(); 
+        return redirect()->route("service-categories.index")->with('success','Service Category Updated Successfully');
     }
 
     /**
@@ -101,7 +115,11 @@ class ServiceCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Service_Category::find($id)->delete($id);
+        
+        return response()->json([
+        'success' => 'Record deleted successfully!'
+    ]);
     }
     public function slugCheck(Request $request)
     {

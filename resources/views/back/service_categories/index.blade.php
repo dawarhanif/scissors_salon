@@ -144,8 +144,8 @@ input:checked + .slider .off
                                          </div>
                                         </label></td>
                 <td><a  href="javascript:void(0)" onclick="delete_category({{$category->id}})" class="btn btn-danger btn-sm"><i class="fas fa-trash" aria-hidden="true"></i></a>
-                <a href="{{route('service-categories.edit',$category->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                <a href="{{route('service-categories.show',$category->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                <a href="{{route('service-categories.edit',$category->slug)}}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                
 
                 </tr>
             @endforeach
@@ -174,17 +174,42 @@ input:checked + .slider .off
   $('#alert_success').alert('close');
 }, 5000);
 </script>
-<script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-  
-    CKEDITOR.replace( 'description' );
-    CKEDITOR.replace( 'title' );
+  function delete_category(id) {
+           
+            Swal.fire({
+                title: 'Are you sure ?',
+                text: "You won't be able to revert this !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  $.ajax({
+                  url: "{{route('service-categories.destroy','')}}"+ "/" + id,
+                  datatype: 'json',
+                  method: 'DELETE',
+                  data: {"id":id, "_token": "{{ csrf_token() }}"},
+                  success: function($data) {
+                    if ($data.success) {
+                            swal.fire("Done!", $data.message, "success").then(function(){
+                              location.reload();
+                            });
+                            
+                        } else {
+                            swal.fire("Error!", 'Sumething went wrong.', "error");
+                        }
+                  }
 
-
-
+              });
+                }
+            })
+        };
 
 </script>
-
 <script>
         
         $('.website_product_sell').click(function(){
