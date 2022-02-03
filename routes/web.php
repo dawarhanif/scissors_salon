@@ -28,8 +28,11 @@ Auth::routes(['register' => false]);
     Route::get('/banner-status-change',[App\Http\Controllers\Back\BannersController::class, 'change_status'])->name('change_banner_status');
     Route::resource('service-categories', App\Http\Controllers\Back\ServiceCategoriesController::class);
     Route::get('/service-slug-check',[App\Http\Controllers\Back\ServiceCategoriesController::class, 'slugCheck'])->name('check_slug_category');
+
     Route::get('/category-status-change',[App\Http\Controllers\Back\ServiceCategoriesController::class, 'change_status'])->name('change_category_status');
     Route::resource('services', App\Http\Controllers\Back\ServicesController::class);
+    Route::get('/services-slug-check',[App\Http\Controllers\Back\ServicesController::class, 'slugCheck'])->name('check_slug_service');
+
    
 
  });

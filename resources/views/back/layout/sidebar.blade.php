@@ -82,6 +82,12 @@
                   <p>Service Categories</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('services.index')}}" id="services_sidebar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Services</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

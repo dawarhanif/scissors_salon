@@ -15,7 +15,7 @@ class Service_Category extends Model
     
     public function service(): BelongsTo
     {
-        return $this->belongsTo(App/Models/Category::class, 'category_id');
+        return $this->hasMany(Service::class);
     }
     
 }

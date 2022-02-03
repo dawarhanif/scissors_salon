@@ -9,9 +9,9 @@ class Service extends Model
 {
     use HasFactory;
 
-        public function category(): HasMany
+        public function category()
         {
-            return $this->hasMany(App/Models/Category::class);
+            return $this->belongsTo(Service_Category::class,'category_id','id');
         }
     
 }
