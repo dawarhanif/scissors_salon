@@ -56,16 +56,16 @@ class ServicesController extends Controller
         ]);
         $services = new Service();
         if($request->hasFile('img')) {
-            $imageName = $request->image->getClientOriginalName();
-            $request->image->move('back/images/uploads', $imageName);
-            $services->image = $imageName;
+            $imageName = $request->img->getClientOriginalName();
+            $request->img->move('back/images/uploads', $imageName);
+            $services->img = $imageName;
         }
         
         $services->title=$request->title;
         $services->description=$request->description;
         $services->slug=$request->slug;
-        $services->category_id=$request->category_id;
-       
+        $services->category_id=$request->category;
+        
         $services->save(); 
         $message = "Service Created Successfully";
         return redirect(route('services.index'));
@@ -77,9 +77,10 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $service = Service::where('slug',$slug)->first();
+        return view('back.services.show',compact('service'));
     }
 
     /**
@@ -88,9 +89,12 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $service = Service::where('slug',$slug)->first();
+        $categories = Service_Category::where('status','active')->get();
+       
+        return view('back.services.edit',compact('service','categories'));
     }
 
     /**
@@ -102,7 +106,31 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'slug' => 'string|unique:service__categories,slug',
+            'category' => 'required|integer',
+
+        
+        ]);
+        $services = Service::find($id);
+
+        if($request->hasFile('img')) {
+            $imageName = $request->img->getClientOriginalName();
+            $request->img->move('back/images/uploads', $imageName);
+            $services->img = $imageName;
+        }
+        
+        $services->title=$request->title;
+        $services->description=$request->description;
+        $services->slug=$request->slug;
+        $services->category_id=$request->category;
+        
+        $services->update(); 
+        $message = "Service Updated Successfully";
+        return redirect(route('services.index'));
     }
 
     /**
@@ -113,7 +141,11 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Service::find($id)->delete($id);
+        
+        return response()->json([
+        'success' => 'Record deleted successfully!'
+    ]);
     }
     public function slugCheck(Request $request)
     {
@@ -128,5 +160,18 @@ class ServicesController extends Controller
     }
     echo json_encode(['slug'=>$slug,'error'=>$error]);
    
+    }
+    public function change_status(Request $request){
+        $id = $request->banner_status;
+        $service = Service::find($id);
+        if($service->status=='active'){
+            $service->status = 'disabled';
+            $service->save();
+        }
+        else{
+            $service->status = 'active';
+            $service->save();
+        }
+        return response("Status Changed");
     }
 }

@@ -17,7 +17,7 @@
 <!-- Jquery Fancybox CSS -->
 <link rel="stylesheet" type="text/css')}}" href="{{asset('front/css/jquery.fancybox.min.css')}}" media="screen" />
 <link href="{{asset('front/css/style.css')}}" rel="stylesheet"  id="colors">
-<title>Scissors Salon | HTML Template by Medialinkers</title>
+
 
 @yield('beforeHeadClose')
 

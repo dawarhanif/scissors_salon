@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\About_us;
+use App\Models\Service;
+use App\Models\Service_Category;
+
+
 
 
 
@@ -17,7 +21,9 @@ class HomeController extends Controller
         $title="Home";
         $banners = Banner::where('status','active')->get();
         $about = About_us::first();
-        return view('front.home.index', compact('title','banners','about'));
+        $services = Service::where('status','active')->orderBy('updated_at','desc')->paginate(3);
+        $service_categories = Service_Category::where('status','active')->get();
+        return view('front.home.index', compact('title','banners','about','services','service_categories'));
     }
 
     

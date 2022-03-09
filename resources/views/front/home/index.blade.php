@@ -2,7 +2,7 @@
 @section('beforeHeadClose')
 
 <link href="{{asset('front/css/owl.carousel.css')}}" rel="stylesheet">
-
+<title>{{$title}}</title>
 @endsection
 
 @section('content')
@@ -56,18 +56,13 @@
     </div>
     <div class="service_box">
       <div class="row">
+        @foreach($services as $service)
         <div class="col-lg-4 col-md-4">
-          <div class="serviceImg"><img alt="" src="images/serviceimg01.png"></div>
-          <h3><a href="services_details.html">HairCut <span>Styles</span></a></h3>
+          <div class="serviceImg"><img alt="" src="{{asset('back/images/uploads/'.$service->img)}}"></div>
+          <h3><a href="services_details.html">{{$service->title}}</a></h3>
         </div>
-        <div class="col-lg-4 col-md-4">
-          <div class="serviceImg"><img alt="" src="images/serviceimg02.png"></div>
-          <h3><a href="services_details.html">Perfect <span>Hairstyles</span></a></h3>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <div class="serviceImg"><img alt="" src="images/serviceimg03.jpg"></div>
-          <h3><a href="services_details.html">Change <span>Coloring</span></a></h3>
-        </div>
+        @endforeach
+        
       </div>
     </div>
   </div>

@@ -23,19 +23,20 @@
     <!-- Info boxes -->
     <div class="row">
       <div class="col-12 col-sm-6 col-md-8 mb-3">
-      
-            <form action="{{route('services.store')}}" method="POST"  enctype="multipart/form-data">
+
+            <form action="{{route('services.update',$service->id)}}" method="POST"  enctype="multipart/form-data">
               @csrf
+              @method('PUT')
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" id="title" class="form-control">
+                    <input type="text" name="title" id="title" value="{{$service->title}}" class="form-control">
                     @error('title')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Slug</label>
-                    <input type="text" name="slug" id="slug" class="form-control">
+                    <input type="text" name="slug" id="slug"  value="{{$service->slug}}"  class="form-control">
                      @error('slug')
                         <div class="alert alert-danger">{{ $message }}</div>
                      @enderror
@@ -43,6 +44,7 @@
                 <div class="form-group">
                     <label>Image</label>
                     <input type="file" name="img" class="form-control">
+                    <img src="{{ asset('back/images/uploads/'.$service->img) }}" height="200px" width="200px" alt="">
                      @error('img')
                         <div class="alert alert-danger">{{ $message }}</div>
                      @enderror
@@ -50,7 +52,9 @@
                 
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea name="description" cols="30" rows="10"></textarea>
+                    <textarea name="description" cols="30" rows="10">
+                        {!!$service->description!!}
+                    </textarea>
                     
                      @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -62,7 +66,7 @@
                     <label>Category</label>
                     <select name="category">
                         @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        <option value="{{$category->id}}" @if($service->category_id==$category->id) selected @endif>{{$category->name}}</option>
                         @endforeach
                     </select>
                      @error('image')

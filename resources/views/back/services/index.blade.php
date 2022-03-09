@@ -133,7 +133,7 @@ input:checked + .slider .off
                 <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{!!$service->title!!}</td>
-                <td><img src="{{asset('back/images/uploads/'.$service->image)}}" style="height:50px; width:50px;" alt=""></td>
+                <td><img src="{{asset('back/images/uploads/'.$service->img)}}" style="height:50px; width:50px;" alt=""></td>
                 <td>{!!substr($service->description,0,155)!!}...</td>
                 <td>{!!$service->category->name!!}</td>
                 <td>{!!$service->slug!!}</td>
@@ -186,7 +186,7 @@ input:checked + .slider .off
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-  function delete_banner(id) {
+  function delete_service(id) {
            
             Swal.fire({
                 title: 'Are you sure ?',
@@ -199,7 +199,7 @@ input:checked + .slider .off
             }).then((result) => {
                 if (result.isConfirmed) {
                   $.ajax({
-                  url: "{{route('banners.destroy','')}}"+ "/" + id,
+                  url: "{{route('services.destroy','')}}"+ "/" + id,
                   datatype: 'json',
                   method: 'DELETE',
                   data: {"id":id, "_token": "{{ csrf_token() }}"},
@@ -229,7 +229,7 @@ input:checked + .slider .off
          
 
             $.ajax({
-                url:"{{route('change_banner_status')}}",
+                url:"{{route('change_service_status')}}",
                 method:'get',
                 data:{
                     "_token": "{{csrf_token()}}",

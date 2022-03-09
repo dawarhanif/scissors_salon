@@ -17,7 +17,7 @@ class ServiceCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Service_CAtegory::all();
+        $categories = Service_Category::all();
         
         return view('back.service_categories.index',compact('categories'));
     }
