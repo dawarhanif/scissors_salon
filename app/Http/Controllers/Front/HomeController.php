@@ -9,6 +9,8 @@ use App\Models\Banner;
 use App\Models\About_us;
 use App\Models\Service;
 use App\Models\Service_Category;
+use App\Models\ImageGallery;
+
 
 
 
@@ -23,7 +25,9 @@ class HomeController extends Controller
         $about = About_us::first();
         $services = Service::where('status','active')->orderBy('updated_at','desc')->paginate(3);
         $service_categories = Service_Category::where('status','active')->get();
-        return view('front.home.index', compact('title','banners','about','services','service_categories'));
+        $image_galleries = ImageGallery::all();
+
+        return view('front.home.index', compact('title','banners','about','services','service_categories','image_galleries'));
     }
 
     

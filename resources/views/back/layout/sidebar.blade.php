@@ -91,6 +91,14 @@
             </ul>
           </li>
           <li class="nav-item">
+                <a href="{{route('image_gallery_index')}}" id="gallery_sidebar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gallery</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
           <a class="dropdown-item nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

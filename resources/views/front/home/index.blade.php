@@ -76,62 +76,18 @@
       <h1>Our Gallery</h1>
     </div>
     <div class="row">
+    @foreach($image_galleries as $image)
+
       <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery01.jpg" alt="">
+        <div class="galleryImg"><img src="{{asset('back/images/uploads/'.$image->image)}}" alt="">
           <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery01.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
+            <div class="content"> <a href="{{asset('back/images/uploads/'.$image->image)}}" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery02.jpg" alt="">
-          <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery02.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery03.jpg" alt="">
-          <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery03.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery04.jpg" alt="">
-          <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery04.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery05.jpg" alt="">
-          <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery05.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery06.jpg" alt="">
-          <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery06.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery07.jpg" alt="">
-          <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery07.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="galleryImg"><img src="images/gallery08.jpg" alt="">
-          <div class="portfolio-overley">
-            <div class="content"> <a href="images/gallery08.jpg" class="fancybox image-link" data-fancybox="images" title="Image Caption Here"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
+      
+      
     </div>
   </div>
 </div>

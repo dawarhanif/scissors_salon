@@ -33,7 +33,10 @@ Auth::routes(['register' => false]);
     Route::resource('services', App\Http\Controllers\Back\ServicesController::class);
     Route::get('/services-slug-check',[App\Http\Controllers\Back\ServicesController::class, 'slugCheck'])->name('check_slug_service');
     Route::get('/service-status-change',[App\Http\Controllers\Back\ServicesController::class, 'change_status'])->name('change_service_status');
-
+   
+    Route::get('/image-gallery', [App\Http\Controllers\Back\ImageGalleryController::class,'index'])->name('image_gallery_index');
+    Route::post('/image-gallery', [App\Http\Controllers\Back\ImageGalleryController::class,'upload'])->name('image_gallery_post');
+    Route::post('/image-gallery-delete', [App\Http\Controllers\Back\ImageGalleryController::class,'destroy'])->name('image_gallery_delete');
    
 
  });
