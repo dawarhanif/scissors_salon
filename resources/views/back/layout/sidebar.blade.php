@@ -99,6 +99,22 @@
             </ul>
           </li>
           <li class="nav-item">
+                <a href="{{route('experts.index')}}" id="experts_sidebar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Experts</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+                <a href="{{route('promo')}}" id="promo_sidebar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Promo Banner</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
           <a class="dropdown-item nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

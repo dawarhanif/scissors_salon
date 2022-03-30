@@ -38,6 +38,12 @@ Auth::routes(['register' => false]);
     Route::post('/image-gallery', [App\Http\Controllers\Back\ImageGalleryController::class,'upload'])->name('image_gallery_post');
     Route::post('/image-gallery-delete', [App\Http\Controllers\Back\ImageGalleryController::class,'destroy'])->name('image_gallery_delete');
    
+    Route::resource('/experts', App\Http\Controllers\Back\ExpertsController::class);
+    Route::get('/expert-status-change',[App\Http\Controllers\Back\ExpertsController::class, 'change_status'])->name('change_expert_status');
+    Route::post('/expert-delete', [App\Http\Controllers\Back\ExpertsController::class,'destroy'])->name('expert_delete');
+
+    Route::get('/promo', [App\Http\Controllers\Back\PromoController::class, 'index'] )->name('promo');
+    Route::post('/promo', [App\Http\Controllers\Back\PromoController::class, 'save'] )->name('update_promo');
 
  });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

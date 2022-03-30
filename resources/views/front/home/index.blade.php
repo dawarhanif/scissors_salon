@@ -100,78 +100,27 @@
       <h1>Our Experts</h1>
     </div>
     <div class="row">
+      @foreach($experts as $expert)
       <div class="col-lg-3 col-md-6">
         <div class="experts">
-          <div class="teamImg"><img src="images/team01.jpg" alt="">
+          <div class="teamImg"><img src="{{ asset('back/images/uploads/experts/'. $expert->image) }}" alt="{{$expert->image}}">
             <ul class="social-icons list-inline">
               <!-- social-icons -->
-              <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-              <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-              <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-              <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
+              <li class="social-facebook"> <a href="{{$expert->facebook_url}}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
+              <li class="social-twitter"> <a href="{{$expert->twitter_url}}"><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
+              <li class="social-linkedin"> <a href="{{$expert->linkedin_url}}"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
+              <li class="social-googleplus"> <a href="{{$expert->instagram_url}}"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
             </ul>
           </div>
           <div class="team_content">
             <h5><a href="#">Jill Cortez</a></h5>
-            <p class="category">Hair Expert</p>
+            <p class="category">{{$expert->expertise}}</p>
             <!-- category --> 
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="experts">
-          <div class="teamImg"><img src="images/team02.jpg" alt="">
-            <ul class="social-icons list-inline">
-              <!-- social-icons -->
-              <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-              <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-              <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-              <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
-            </ul>
-          </div>
-          <div class="team_content">
-            <h5><a href="#">Calvin Roy</a></h5>
-            <p class="category">Style Expert</p>
-            <!-- category --> 
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="experts">
-          <div class="teamImg"><img src="images/team03.jpg" alt="">
-            <ul class="social-icons list-inline">
-              <!-- social-icons -->
-              <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-              <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-              <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-              <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
-            </ul>
-          </div>
-          <div class="team_content">
-            <h5><a href="#">Christie Pratt</a></h5>
-            <p class="category">Nail Expert</p>
-            <!-- category --> 
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="experts">
-          <div class="teamImg"><img src="images/team04.jpg" alt="">
-            <ul class="social-icons list-inline">
-              <!-- social-icons -->
-              <li class="social-facebook"> <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> </li>
-              <li class="social-twitter"> <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-              <li class="social-linkedin"> <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a> </li>
-              <li class="social-googleplus"> <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a> </li>
-            </ul>
-          </div>
-          <div class="team_content">
-            <h5><a href="#">Ben Jonson</a></h5>
-            <p class="category">Hair Expert</p>
-            <!-- category --> 
-          </div>
-        </div>
-      </div>
+      @endforeach
+     
     </div>
   </div>
 </div>
