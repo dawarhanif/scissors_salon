@@ -34,7 +34,7 @@ class SettingsController extends Controller
         $settings->address=$request->address;
        
         $settings->save();
-        return view('back.settings.index',compact('settings'));
+        return redirect(route('settings'));
 
     }
 }

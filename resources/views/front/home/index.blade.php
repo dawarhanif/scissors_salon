@@ -127,14 +127,14 @@
 <!-- Expert End --> 
 
 <!-- Appointment Start -->
-<div class="appointment-wrap">
+<div class="appointment-wrap" style="background: url( {{ asset('back/images/uploads/promo_image/'.$promo->logo) }} ) no-repeat top;background-size: cover;">
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-        <h3>Donec egestas auctor arcu tincidunt.</h3>
+        <h3>{{$promo->caption}}</h3>
       </div>
       <div class="col-lg-4">
-        <div class="readmore"><a href="contact.html">Book An Appointment</a></div>
+        <div class="readmore"><a href="{{$promo->button_url}}">Book An Appointment</a></div>
       </div>
     </div>
   </div>

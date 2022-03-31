@@ -11,6 +11,8 @@ use App\Models\Service;
 use App\Models\Service_Category;
 use App\Models\ImageGallery;
 use App\Models\Expert;
+use App\Models\Promo;
+
 
 
 
@@ -29,7 +31,8 @@ class HomeController extends Controller
         $service_categories = Service_Category::where('status','active')->get();
         $image_galleries = ImageGallery::all();
         $experts = Expert::where('status','active')->get();
-        return view('front.home.index', compact('title','banners','about','services','service_categories','image_galleries','experts'));
+        $promo = Promo::find(1);
+        return view('front.home.index', compact('title','banners','about','services','service_categories','image_galleries','experts','promo'));
     }
 
     

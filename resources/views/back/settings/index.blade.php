@@ -23,7 +23,7 @@
     <!-- Info boxes -->
     <div class="row">
       <div class="col-12 col-sm-6 col-md-8 mb-3">
-        <form action="{{route('save_settings')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('save_settings')}}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
             <label>

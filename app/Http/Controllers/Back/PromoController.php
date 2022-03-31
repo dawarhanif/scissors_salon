@@ -10,31 +10,30 @@ use App\Models\Promo;
 class PromoController extends Controller
 {
     public function index(){
-        $promos = Promo::first();
-        return view('back.promo.index',compact('promos'));
+        $promo = Promo::first();
+        return view('back.promo.index',compact('promo'));
     }
     public function save(Request $request){
-        
-        
+  
         $validated = $request->validate([
-            'image' => 'required|max:10000',
-            'phone' => 'required',
-            'email' => 'email',
+            'caption' => 'required',
+            'button_url' => 'required',
         
         ]);
-        $settings = Setting::find(1);
-        if($request->hasFile('image')) {
-            $imageName = $request->image->getClientOriginalName();
-            $request->image->move('back/images/uploads', $imageName);
-            $settings->logo = $imageName;
+        $promo = Promo::find(1);
+      
+
+        if($request->hasFile('logo')) {
+            $imageName = $request->logo->getClientOriginalName();
+            $request->logo->move('back/images/uploads/promo_image', $imageName);
+            $promo->logo = $imageName;
         }
         
-        $settings->phone=$request->phone;
-        $settings->email=$request->email;
-        $settings->address=$request->address;
+        $promo->caption=$request->caption;
+        $promo->button_url=$request->button_url;
        
-        $settings->save();
-        return view('back.settings.index',compact('settings'));
+        $promo->update();
+        return redirect(route('promo'));
 
     }
 }

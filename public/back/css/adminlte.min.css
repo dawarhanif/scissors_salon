@@ -408,6 +408,7 @@
     padding-left: 0;
     list-style: none;
   }
+:marker{display:none !important;}
   .list-inline {
     padding-left: 0;
     list-style: none;

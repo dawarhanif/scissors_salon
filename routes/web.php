@@ -44,6 +44,7 @@ Auth::routes(['register' => false]);
 
     Route::get('/promo', [App\Http\Controllers\Back\PromoController::class, 'index'] )->name('promo');
     Route::post('/promo', [App\Http\Controllers\Back\PromoController::class, 'save'] )->name('update_promo');
+    Route::post('/promo-save', [App\Http\Controllers\Back\PromoController::class, 'save'] )->name('save_promo');
 
  });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
