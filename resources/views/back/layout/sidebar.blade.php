@@ -110,6 +110,12 @@
                   <p>Promo Banner</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('blogs.index')}}" id="blogs_sidebar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Blogs</p>
+                </a>
+              </li>
             </ul>
           </li>
             </ul>

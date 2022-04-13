@@ -46,6 +46,10 @@ Auth::routes(['register' => false]);
     Route::post('/promo', [App\Http\Controllers\Back\PromoController::class, 'save'] )->name('update_promo');
     Route::post('/promo-save', [App\Http\Controllers\Back\PromoController::class, 'save'] )->name('save_promo');
 
+    Route::resource('/blogs', App\Http\Controllers\Back\BlogController::class);
+    Route::get('/blog-status-change',[App\Http\Controllers\Back\BlogController::class, 'change_status'])->name('change_blog_status');
+    Route::post('/blog-delete', [App\Http\Controllers\Back\BlogController::class,'destroy'])->name('blog_delete');
+
  });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/',[App\Http\Controllers\front\HomeController::class, 'index']);
